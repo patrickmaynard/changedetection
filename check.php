@@ -9,17 +9,36 @@ class Checker
 {
     private $sources;
 
+		/**
+		 * Chek all urls for new stuff
+		 */
     public function checkAll()
 		{
 				$this->sources = $this->loadSources();
-				
+
+        $alerts = [];
+
 				foreach ($this->sources as $source) {
-            $this->manageFiles($source);
+            $this->populateFiles($source);
+						if ($this->isRelevantChangePresent($source)) {
+						    $alerts[] = $sourcep['url'];
+						}
 				}
 
 		}
 
-    private function manageFiles($source)
+		/**
+		 * Compare files and return true or false
+		 */
+		private function isRelevantChangePresent($source)
+		{
+		    return 'stub';
+		}
+
+		/**
+		 * Dump html into files
+		 */ 
+    private function populateFiles($source)
 		{ 
 		    $fileName = md5($source['url']);
 		    $html = file_get_contents($source['url']);	
@@ -35,11 +54,12 @@ class Checker
 				}
 		}
 
+		/**
+		 * Load the config values
+		 */
     private function loadSources()
 		{
-			  echo "\n Fetching config ... \n";
 			  include(__DIR__ . DIRECTORY_SEPARATOR . 'config.php');
-			  echo "\n Done fetching config. \n";
         return $sources;
 	  }
 }
@@ -55,8 +75,8 @@ class Mailer
 $checker = new Checker;
 $mailer = new Mailer;
 $alerts = $checker->checkAll();
-//if (count($alerts) > 0) {
-//    $mailer->send($alerts);
-//}
+if (count($alerts) > 0) {
+    $mailer->send($alerts);
+}
 
 ?>
