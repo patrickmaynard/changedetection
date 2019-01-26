@@ -11,19 +11,28 @@ class Checker
 
     public function checkAll()
 		{
-        echo "\n Checking ... \n";
 				$this->sources = $this->loadSources();
 				
-				echo "\n Length of sources array: " . count($this->sources)  . "\n";
 				foreach ($this->sources as $source) {
-				echo "\n In the loop ... \n";
-
-					$fileName = md5($source['url']);
-				    $html = file_get_contents($source['url']);	
-
-						file_put_contents(__DIR__ . DIRECTORY_SEPARATOR . 'new-snapshots' . DIRECTORY_SEPARATOR . $fileName, $html);
+            $this->manageFiles($source);
 				}
 
+		}
+
+    private function manageFiles($source)
+		{ 
+		    $fileName = md5($source['url']);
+		    $html = file_get_contents($source['url']);	
+
+		    if (file_exists(__DIR__ . DIRECTORY_SEPARATOR . 'new-snapshots' . DIRECTORY_SEPARATOR . $fileName, $html)){
+				    rename(__DIR__ . DIRECTORY_SEPARATOR . 'new-snapshots' . DIRECTORY_SEPARATOR . $fileName,
+								__DIR__ . DIRECTORY_SEPARATOR . 'old-snapshots' . DIRECTORY_SEPARATOR . $fileName
+							);
+						file_put_contents(__DIR__ . DIRECTORY_SEPARATOR . 'new-snapshots' . DIRECTORY_SEPARATOR . $fileName, $html);	
+				} else {
+						file_put_contents(__DIR__ . DIRECTORY_SEPARATOR . 'new-snapshots' . DIRECTORY_SEPARATOR . $fileName, $html);	
+						file_put_contents(__DIR__ . DIRECTORY_SEPARATOR . 'old-snapshots' . DIRECTORY_SEPARATOR . $fileName, $html);	
+				}
 		}
 
     private function loadSources()
