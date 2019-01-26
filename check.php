@@ -12,7 +12,6 @@ class Checker
     public function checkAll()
 		{
         echo "\n Checking ... \n";
-        return 'stub.';
 				$this->sources = $this->loadSources();
 				
 				echo "\n Length of sources array: " . count($this->sources)  . "\n";
