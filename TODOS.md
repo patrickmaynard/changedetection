@@ -1,4 +1,5 @@
 * Create initial version of check.php script that includes all logic -- we need to get this thing running because our old change-detection service isn't working anymore!
+* Fix whitespace using an actual IDE (original was hackd together in a messed-up copy of Vim)
 * Move classes to their own files in keeping with PSR-1
 * Set up a PSR-4-compliant autoloader
 * Move config into an XML or CSV file
