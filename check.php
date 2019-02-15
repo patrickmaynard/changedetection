@@ -7,25 +7,24 @@
 
 class Checker 
 {
-    private $sources;
+	private $sources;
 
-		/**
-		 * Chek all urls for new stuff
-		 */
+	/**
+	 * Chek all urls for new stuff
+	 */
     public function checkAll()
-		{
-				$this->sources = $this->loadSources();
+    {
+        $this->sources = $this->loadSources();
 
         $alerts = [];
 
-				foreach ($this->sources as $source) {
+        foreach ($this->sources as $source) {
             $this->populateFiles($source);
-						if ($this->isRelevantChangePresent($source)) {
-						    $alerts[] = $sourcep['url'];
-						}
-				}
-
-		}
+			if ($this->isRelevantChangePresent($source)) {
+			    $alerts[] = $sourcep['url'];
+            }
+        }
+    }
 
 		/**
 		 * Compare files and return true or false
