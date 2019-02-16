@@ -67,7 +67,8 @@ class Checker
     {
         $fileName = md5($source['url']);
         $oldHtml  = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'old-snapshots' . DIRECTORY_SEPARATOR . $fileName);
-        $newHtml  = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'old-snapshots' . DIRECTORY_SEPARATOR . $fileName);
+        $newHtml  = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'new-snapshots' . DIRECTORY_SEPARATOR . $fileName);
+        
         return $oldHtml !== $newHtml;
     }
 
