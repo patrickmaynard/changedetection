@@ -21,9 +21,11 @@ class Checker
         foreach ($this->sources as $source) {
             $this->populateFiles($source);
 			if ($this->isRelevantChangePresent($source)) {
-			    $alerts[] = $sourcep['url'];
+			    $alerts[] = $source['url'];
             }
         }
+        
+        return $alerts;
     }
 
     /**
@@ -42,24 +44,21 @@ class Checker
      * Look for a specific substring in new text.
      */
     private function isSubstringChangePresent($source)
-        {  
-            $fileName = md5($source['url']);
-            $oldHtml  = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'old-snapshots' . DIRECTORY_SEPARATOR . $fileName);
-            $newHtml  = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'new-snapshots' . DIRECTORY_SEPARATOR . $fileName);
-            
-            preg_match_all('/.{500}'. $source['must_contain_new'] . '.{500}/sU',$newHtml,$matches);
-            foreach($matches as $match){
-                foreach($match as $submatch){
-                    if (!is_numeric($submatch)) {
-                        if (strpos($oldHtml,$submatch)  === false) {
-                        	    return true;
-                        }
-                    }
+    {  
+        $fileName = md5($source['url']);
+        $oldHtml  = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'old-snapshots' . DIRECTORY_SEPARATOR . $fileName);
+        $newHtml  = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'new-snapshots' . DIRECTORY_SEPARATOR . $fileName);
+        
+        preg_match_all('/.{500}'. $source['must_contain_new'] . '.{500}/sU',$newHtml,$matches);
+        foreach($matches as $match){
+            foreach ($match as $submatch) {
+                if (strpos($oldHtml,$submatch) === false) {
+                    return true;
                 }
             }
-            
-            return false;
         }
+        return false;
+    }
 
     /**
      * Checks to see if any change is present at all.
@@ -69,7 +68,7 @@ class Checker
         $fileName = md5($source['url']);
         $oldHtml  = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'old-snapshots' . DIRECTORY_SEPARATOR . $fileName);
         $newHtml  = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'old-snapshots' . DIRECTORY_SEPARATOR . $fileName);
-        return ! ($oldHtml === $newHtml);
+        return $oldHtml !== $newHtml;
     }
 
     /**
@@ -80,15 +79,15 @@ class Checker
         $fileName = md5($source['url']);
         $html = file_get_contents($source['url']);	
         
-        if (file_exists(__DIR__ . DIRECTORY_SEPARATOR . 'new-snapshots' . DIRECTORY_SEPARATOR . $fileName, $html)){
-        	    rename(__DIR__ . DIRECTORY_SEPARATOR . 'new-snapshots' . DIRECTORY_SEPARATOR . $fileName,
-        					__DIR__ . DIRECTORY_SEPARATOR . 'old-snapshots' . DIRECTORY_SEPARATOR . $fileName
-        				);
-        			file_put_contents(__DIR__ . DIRECTORY_SEPARATOR . 'new-snapshots' . DIRECTORY_SEPARATOR . $fileName, $html);	
-        	} else {
-        			file_put_contents(__DIR__ . DIRECTORY_SEPARATOR . 'new-snapshots' . DIRECTORY_SEPARATOR . $fileName, $html);	
-        			file_put_contents(__DIR__ . DIRECTORY_SEPARATOR . 'old-snapshots' . DIRECTORY_SEPARATOR . $fileName, $html);	
-        	}
+        if (file_exists(__DIR__ . DIRECTORY_SEPARATOR . 'new-snapshots' . DIRECTORY_SEPARATOR . $fileName)){
+            rename(__DIR__ . DIRECTORY_SEPARATOR . 'new-snapshots' . DIRECTORY_SEPARATOR . $fileName,
+        			__DIR__ . DIRECTORY_SEPARATOR . 'old-snapshots' . DIRECTORY_SEPARATOR . $fileName
+        		);
+        	file_put_contents(__DIR__ . DIRECTORY_SEPARATOR . 'new-snapshots' . DIRECTORY_SEPARATOR . $fileName, $html);	
+        } else {
+        	file_put_contents(__DIR__ . DIRECTORY_SEPARATOR . 'new-snapshots' . DIRECTORY_SEPARATOR . $fileName, $html);	
+        	file_put_contents(__DIR__ . DIRECTORY_SEPARATOR . 'old-snapshots' . DIRECTORY_SEPARATOR . $fileName, $html);	
+        }
     }
 
     /**
