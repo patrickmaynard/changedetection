@@ -1,0 +1,7 @@
+{
+    "name": "patrickmaynard/changedetection",
+    "description": "A change detector for flagging additions to webpages",
+    "type": "project",
+    "license": "MIT",
+    "require": {}
+}
