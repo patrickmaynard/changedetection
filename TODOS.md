@@ -5,6 +5,7 @@
 * Move classes to their own files in keeping with PSR-1
 * Set up a PSR-4-compliant autoloader
 * Move config into an XML or CSV file
-* Allow the user to set the number of nearby chars checked on a per-url basis
+* Get the mailer working (maybe using Swift Mailer?)
 * Improve the README file
+* Allow the user to set the number of nearby chars checked on a per-url basis
 * Put this up on packagist
