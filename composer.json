@@ -1,7 +1,11 @@
 {
-    "name": "patrickmaynard/changedetection",
-    "description": "A change detector for flagging additions to webpages",
-    "type": "project",
-    "license": "MIT",
-    "require": {}
+	"minimum-stability" : "alpha",
+	"name" : "patrick/changedetection",
+	"description" : "A change detection script for observing additions to web pages",
+	"license" : "MIT",
+	"autoload" : {
+		"psr-4" : {
+			"patrickmaynard\\changedetection\\" : "src/"
+		}
+	}
 }
