@@ -4,7 +4,9 @@ namespace patrickmaynard\changedetection;
 
 class Checker 
 {
-	private $sources;
+    const BASE_PATH = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR;
+    
+    private $sources;
 
 	/**
 	 * Chek all urls for new stuff
@@ -44,18 +46,13 @@ class Checker
     {  
         $fileName = md5($source['url']);
         $oldHtml  = file_get_contents(
-                __DIR__ . DIRECTORY_SEPARATOR . 
-                '..' .
-                DIRECTORY_SEPARATOR .
+                self::BASE_PATH .
                 'old-snapshots' . 
                 DIRECTORY_SEPARATOR . 
                 $fileName
             );
         $newHtml  = file_get_contents(
-                __DIR__ . 
-                DIRECTORY_SEPARATOR .
-                '..' .
-                DIRECTORY_SEPARATOR .
+                self::BASE_PATH .
                 'new-snapshots' . 
                 DIRECTORY_SEPARATOR . 
                 $fileName
@@ -79,18 +76,13 @@ class Checker
     {
         $fileName = md5($source['url']);
         $oldHtml  = file_get_contents(
-            __DIR__ . DIRECTORY_SEPARATOR .
-            '..' .
-            DIRECTORY_SEPARATOR .
+                self::BASE_PATH .
                 'old-snapshots' . 
                 DIRECTORY_SEPARATOR . 
                 $fileName
             );
         $newHtml  = file_get_contents(
-                __DIR__ .
-                DIRECTORY_SEPARATOR .
-                '..' .
-                DIRECTORY_SEPARATOR . 
+                self::BASE_PATH . 
                 'new-snapshots' . 
                 DIRECTORY_SEPARATOR . 
                 $fileName
@@ -107,34 +99,25 @@ class Checker
         $fileName = md5($source['url']);
         $html = file_get_contents($source['url']);	
         
-        if (file_exists(__DIR__ . DIRECTORY_SEPARATOR . 'new-snapshots' . DIRECTORY_SEPARATOR . $fileName)){
-            rename(__DIR__ . DIRECTORY_SEPARATOR . 'new-snapshots' . DIRECTORY_SEPARATOR . $fileName,
-        			__DIR__ . DIRECTORY_SEPARATOR . 'old-snapshots' . DIRECTORY_SEPARATOR . $fileName
+        if (file_exists(self::BASE_PATH . 'new-snapshots' . DIRECTORY_SEPARATOR . $fileName)){
+            rename(self::BASE_PATH . 'new-snapshots' . DIRECTORY_SEPARATOR . $fileName,
+        			self::BASE_PATH . 'old-snapshots' . DIRECTORY_SEPARATOR . $fileName
         		);
         	file_put_contents(
-        	    __DIR__ .
-        	    DIRECTORY_SEPARATOR .
-        	    '..' . 
-        	    DIRECTORY_SEPARATOR .
+        	    self::BASE_PATH .
             	    'new-snapshots' . 
             	    DIRECTORY_SEPARATOR . 
             	    $fileName, $html
         	    );	
         } else {
         	file_put_contents(
-            	    __DIR__ . 
-        	    DIRECTORY_SEPARATOR .
-        	    '..' .
-        	    DIRECTORY_SEPARATOR .
+            	    self::BASE_PATH .
             	    'new-snapshots' . 
             	    DIRECTORY_SEPARATOR . 
             	    $fileName, $html
         	    );	
         	file_put_contents(
-            	    __DIR__ . 
-        	    DIRECTORY_SEPARATOR .
-        	    '..' .
-        	    DIRECTORY_SEPARATOR .
+            	    self::BASE_PATH .
             	    'old-snapshots' . 
             	    DIRECTORY_SEPARATOR . 
             	    $fileName, $html
@@ -148,10 +131,7 @@ class Checker
     private function loadSources()
     {
         include(
-            __DIR__ . 
-            DIRECTORY_SEPARATOR . 
-            '..' . 
-            DIRECTORY_SEPARATOR . 
+            self::BASE_PATH . 
             'config.php'
             );
         
