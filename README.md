@@ -14,4 +14,12 @@ See the TODOS.md document for things that need to change before this gets used a
 
 ## To run unit tests
 
-`vendor/bin/phpunit src/test/TestIsAnyChangePresent.php`
+`vendor/bin/phpunit src/test/*`
+
+## To run the checker manually 
+
+`php check.php`
+
+## To make a cron job that runs the checker hourly
+
+Coming soon ;-)
