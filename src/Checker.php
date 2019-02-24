@@ -72,7 +72,7 @@ class Checker
     /**
      * Checks to see if any change is present at all.
      */
-    private function isAnyChangePresent($source)
+    public function isAnyChangePresent($source)
     {
         $fileName = md5($source['url']);
         $oldHtml  = file_get_contents(
