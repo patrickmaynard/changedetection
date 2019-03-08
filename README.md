@@ -20,6 +20,10 @@ See the TODOS.md document for things that need to change before this gets used a
 
 `php check.php`
 
+## Experimental: Install Laradock in the project
+
+./start-laradock.sh
+
 ## To make a cron job that runs the checker hourly
 
 Coming soon ;-)
