@@ -1108,7 +1108,7 @@ $( function() {
       { value: "Guadeloupe, Martinique, Saint Martin, and Saint Barthélemy (French West Indies)", url: "/content/travel/en/international-travel/International-Travel-Country-Information-Pages/GuadeloupeMartiniqueSaintMartinSaintBarthelemy", keywords: "Guadeloupe, Martinique, Saint, Martin, Barthelemy" },
       { value: "Israel", url: "/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Israel", keywords: "Israel" },
       { value: "Eswatini (Swaziland)", url: "/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Eswatini", keywords: "Swaziland, Eswatini" },
-      { value: "Macedonia", url: "/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Macedonia", keywords: "Macedonia" },
+      { value: "North Macedonia", url: "/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Macedonia", keywords: "North Macedonia, Macedonia" },
       { value: "Aruba", url: "/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Aruba", keywords: "Aruba" },
       { value: "Afghanistan", url: "/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Afghanistan", keywords: "Afghanistan" },
       { value: "Angola", url: "/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Angola", keywords: "Angola" },
@@ -2053,11 +2053,6 @@ $( function() {
 </li>
 <li>
     <p>
-        <a href="/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Macedonia.html" title="Macedonia">Macedonia</a>
-    </p>
-</li>
-<li>
-    <p>
         <a href="/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Madagascar.html" title="Madagascar">Madagascar</a>
     </p>
 </li>
@@ -2194,6 +2189,11 @@ $( function() {
 <li>
     <p>
         <a href="/content/travel/en/international-travel/International-Travel-Country-Information-Pages/KoreaDemocraticPeoplesRepublicof.html" title="North Korea (Democratic People's Republic of Korea)">North Korea (Democratic People's Republic of Korea)</a>
+    </p>
+</li>
+<li>
+    <p>
+        <a href="/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Macedonia.html" title="North Macedonia">North Macedonia</a>
     </p>
 </li>
 <li>

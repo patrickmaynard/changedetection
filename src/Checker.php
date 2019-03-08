@@ -58,7 +58,18 @@ class Checker
                 $fileName
             );
         
-        preg_match_all('/.{500}'. $source['must_contain_new'] . '.{500}/sU',$newHtml,$matches);
+        preg_match_all(
+                '/.{' . 
+                $source['check_this_many_chars_proximity'] . 
+                '}'. 
+                $source['must_contain_new'] . 
+                '.{' . 
+                $source['check_this_many_chars_proximity'] . 
+                '}/sU', 
+                $newHtml, 
+                $matches
+            );
+        
         foreach($matches as $match){
             foreach ($match as $submatch) {
                 if (strpos($oldHtml,$submatch) === false) {

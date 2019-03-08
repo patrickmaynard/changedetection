@@ -6,11 +6,11 @@
 * x Move classes to their own files in keeping with PSR-1
 * x Create a function or property that returns the project base path, subbing it in for all of those directory traversals I'm doing in Checker.php for now.
 * x Add unit tests (will require making some Checker.php methods public)
-* Allow the user to set the number of nearby chars checked on a per-url basis
+* x Allow the user to set the number of nearby chars checked on a per-url basis
+* x Add another example url or two -- maybe including http://www.wgberlin.net
 * Get the mailer working (probably using Laradock and Mailu)
 * Show in the README file how to set up mailu and the cron job to run a check every 15 mins
 * Improve the README file in general
-* Add another example url or two -- maybe including http://www.wgberlin.net
 * Ask on Stack Overflow whether there are any ways to simplify the README by pre-configuring things
 * Rename the repository to change-detection -- with a dash
 * Link to the script on Twitter and Mastodon
